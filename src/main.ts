@@ -6,7 +6,6 @@ import * as process from 'process';
 
 async function bootstrap() {
   const app = await NestFactory.create(UsersModule);
-  app.use(json({ limit: '50mb' }));
   const port = process.env.PORT || 3000;
   await app.listen(port, '0.0.0.0');
 }
