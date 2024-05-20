@@ -7,17 +7,17 @@ import { DiaryController } from '../controllers/diary.controller';
 import { CalendarController } from '../controllers/calender.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserSchema } from '../database/schemas/user.schema';
-import { AuthController } from 'src/controllers/auth.controller';
-import { AuthService } from 'src/services/auth.service';
+import { AuthController } from '../controllers/auth.controller';
+import { AuthService } from '../services/auth.service';
 import { JwtService } from '../services/jwt.service';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
-import { AppService } from 'src/services/app.service';
-import { AppController } from 'src/controllers/app.controller';
+import { AppService } from '../services/app.service';
+import { AppController } from '../controllers/app.controller';
 import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot(), 
     DatabaseModule,
     JwtModule.register({
       global: true,
