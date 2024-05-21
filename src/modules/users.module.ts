@@ -15,9 +15,10 @@ import { jwtConstants } from './constants';
 import { AppService } from '../services/app.service';
 import { AppController } from '../controllers/app.controller';
 import { ConfigModule } from '@nestjs/config';
+
 @Module({
   imports: [
-    ConfigModule.forRoot(), 
+    ConfigModule.forRoot(),
     DatabaseModule,
     JwtModule.register({
       global: true,

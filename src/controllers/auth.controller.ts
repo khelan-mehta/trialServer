@@ -17,7 +17,7 @@ export class AuthController {
     const { email, password } = body;
     try {
       const user = await this.authService.register(email, password);
-      return res.status(HttpStatus.CREATED).json(user);
+      return res.status(HttpStatus.OK).json(user);
     } catch (error) {
       return res
         .status(HttpStatus.BAD_REQUEST)
@@ -40,7 +40,7 @@ export class AuthController {
     const tokens = await this.authService.login(user);
     res.cookie('access_token', tokens.accessToken, { httpOnly: true });
     res.cookie('refresh_token', tokens.refreshToken, { httpOnly: true });
-    return res.json(tokens);
+    return res.json(tokens).status(HttpStatus.OK);
   }
 
   @Post('google')
@@ -66,7 +66,7 @@ export class AuthController {
     try {
       const newTokens = await this.authService.refreshToken(token);
       res.cookie('access_token', newTokens.accessToken, { httpOnly: true });
-      return res.json(newTokens);
+      return res.json(newTokens).status(HttpStatus.OK);
     } catch (error) {
       return res
         .status(HttpStatus.UNAUTHORIZED)
